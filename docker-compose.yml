@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: chatdb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5433:5432"
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - mosquitto
+    environment:
+      APP_ENV: docker
+      DB_HOST: postgres
+      DB_PORT: 5433
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_NAME: chatdb
+      MQTT_HOST: mosquitto
+      MQTT_PORT: 1883
+      JWT_SECRET: my_super_secret_key_for_jwt

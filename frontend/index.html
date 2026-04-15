@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT Чат - Авторизация</title>
+    <!-- Подключаем файл со стилями -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Форма Входа -->
+    <div id="login-form">
+        <h2>Вход</h2>
+        <input type="text" id="login-username" placeholder="Логин" required>
+        <input type="password" id="login-password" placeholder="Пароль" required>
+        <button onclick="login()">Войти</button>
+        <div id="login-error" class="error"></div>
+        <span class="toggle-link" onclick="toggleForms()">Нет аккаунта? Зарегистрироваться</span>
+    </div>
+
+    <!-- Форма Регистрации -->
+    <div id="register-form">
+        <h2>Регистрация</h2>
+        <input type="text" id="reg-username" placeholder="Логин" required>
+        <input type="password" id="reg-password" placeholder="Пароль" required>
+        <button onclick="register()">Зарегистрироваться</button>
+        <div id="reg-error" class="error"></div>
+        <div id="reg-success" class="success"></div>
+        <span class="toggle-link" onclick="toggleForms()">Уже есть аккаунт? Войти</span>
+    </div>
+</div>
+
+<!-- Подключаем файл с логикой -->
+<script src="auth.js"></script>
+
+</body>
+</html>
