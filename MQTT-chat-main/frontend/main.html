@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT Чат - Комната</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="chat-container">
+    <!-- Шапка чата -->
+    <div class="chat-header">
+        <div>
+            <h2 style="margin: 0;">MQTT Чат</h2>
+            <div id="user-info" class="user-info">Вы вошли как: <span></span></div>
+        </div>
+        <button class="logout-btn" onclick="logout()">Выйти</button>
+    </div>
+
+    <!-- Панель подключения к топику -->
+    <div class="topic-panel">
+        <input type="text" id="topic-input" placeholder="Введите название топика (например, room1)">
+        <button id="connect-btn" onclick="connectToTopic()">Подключиться</button>
+    </div>
+
+    <!-- Окно с сообщениями -->
+    <div id="chat-window" class="chat-window">
+        <div class="system-message">Подключитесь к топику, чтобы начать общение</div>
+    </div>
+
+    <!-- Панель отправки сообщений (изначально отключена) -->
+    <div class="message-panel">
+        <input type="text" id="message-input" placeholder="Введите сообщение..." disabled onkeypress="handleKeyPress(event)">
+        <button id="send-btn" onclick="sendMessage()" disabled>Отправить</button>
+    </div>
+</div>
+
+<script src="chat.js"></script>
+</body>
+</html>

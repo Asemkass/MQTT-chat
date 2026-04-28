@@ -1,0 +1,279 @@
+/* --- БАЗОВЫЕ СТИЛИ И ШРИФТЫ --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    /* Тёмно-синий фон с лёгким градиентом */
+    background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+    color: #f8fafc; /* Светло-серый текст для контраста */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* --- ОБЩИЕ ЭЛЕМЕНТЫ (Кнопки и поля ввода) --- */
+input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    background-color: #0f172a; /* Тёмный фон инпутов */
+    color: #f8fafc; /* Белый текст внутри */
+    border: 1px solid #334155;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: #64748b; /* Приглушенный цвет плейсхолдера */
+}
+
+input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: #3b82f6; /* Яркий синий цвет кнопки */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover { 
+    background-color: #2563eb; 
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:disabled {
+    background-color: #334155;
+    color: #94a3b8;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* --- СТРАНИЦА АВТОРИЗАЦИИ (index.html) --- */
+.container {
+    background-color: #1e293b;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    width: 320px;
+    text-align: center;
+}
+
+h2 { 
+    margin-top: 0;
+    margin-bottom: 25px; 
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: -0.5px;
+}
+
+.toggle-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #93c5fd;
+    cursor: pointer;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.toggle-link:hover {
+    color: #bfdbfe;
+    text-decoration: underline;
+}
+
+.error { 
+    color: #f87171;
+    font-size: 14px; 
+    margin-top: 12px; 
+}
+
+.success {
+    color: #34d399;
+    font-size: 14px; 
+    margin-top: 12px;
+}
+
+#register-form { 
+    display: none; 
+}
+
+
+/* --- СТРАНИЦА ЧАТА (main.html) --- */
+.chat-container {
+    background-color: #1e293b; /* Тот же цвет, что и у карточки входа */
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    width: 800px; /* Сделали чат пошире */
+    max-width: 95vw;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-header {
+    background-color: #0f172a;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #334155;
+}
+
+.user-info {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-top: 5px;
+}
+
+.user-info span {
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+.logout-btn {
+    width: auto;
+    margin: 0;
+    padding: 8px 16px;
+    background-color: #ef4444; /* Красная кнопка выхода */
+    font-size: 14px;
+}
+
+.logout-btn:hover {
+    background-color: #dc2626;
+}
+
+.topic-panel {
+    display: flex;
+    gap: 15px;
+    padding: 15px 25px;
+    background-color: #1e293b;
+    border-bottom: 1px solid #334155;
+}
+
+.topic-panel input {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.topic-panel button {
+    width: auto;
+    margin: 0;
+    padding: 0 25px;
+}
+
+.chat-window {
+    flex-grow: 1;
+    padding: 25px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #0f172a; /* Темный фон для сообщений */
+}
+
+/* --- СООБЩЕНИЯ (ПУЗЫРИ) --- */
+.message {
+    max-width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Чужие сообщения (слева) */
+.message.other {
+    align-self: flex-start;
+}
+
+.message.other .bubble {
+    background-color: #334155; /* Тёмно-серый для чужих */
+    border-radius: 14px 14px 14px 4px;
+}
+
+/* Мои сообщения (справа) */
+.message.me {
+    align-self: flex-end;
+}
+
+.message.me .bubble {
+    background-color: #3b82f6; /* Синий для своих */
+    border-radius: 14px 14px 4px 14px;
+}
+
+.bubble {
+    padding: 12px 16px;
+    color: white;
+    font-size: 15px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.msg-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+
+.msg-author {
+    font-weight: 600;
+    color: #93c5fd;
+}
+
+.message.me .msg-author {
+    color: #e0f2fe;
+}
+
+.msg-time {
+    color: #cbd5e1;
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+.system-message {
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+    margin: auto;
+    padding: 10px 20px;
+    background-color: rgba(15, 23, 42, 0.5);
+    border-radius: 20px;
+}
+
+.message-panel {
+    display: flex;
+    gap: 15px;
+    padding: 20px 25px;
+    background-color: #1e293b;
+    border-top: 1px solid #334155;
+}
+
+.message-panel input {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.message-panel button {
+    width: auto;
+    margin: 0;
+    padding: 0 30px;
+}
